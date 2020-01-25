@@ -7,12 +7,12 @@ class CategoreisScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DeliMeal'),
+        title: const Text('DeliMeal'),
       ),
       body: GridView(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         children: DUMMY_CATEGORIES.map((cat) => CategoryItem(cat)).toList(),
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           childAspectRatio: 3/2,
           crossAxisSpacing: 20,

@@ -7,13 +7,14 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(category.title),
+      child: Text(category.title, style: Theme.of(context).textTheme.title,),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [category.color.withOpacity(0.7), category.color],
         ),
+        borderRadius: BorderRadius.circular(20)
       ),
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(16),
     );
   }
 }
