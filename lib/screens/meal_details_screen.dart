@@ -9,10 +9,10 @@ class MealScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(meal.title)),
       body: SingleChildScrollView(
-        child: Column(
+              child: Column(
           children: <Widget>[
             Container(
-              height: 300,
+              height: 230,
               width: double.infinity,
               child: Image.network(
                 meal.imageUrl,
@@ -20,47 +20,50 @@ class MealScreen extends StatelessWidget {
               ),
             ),
             buildSectionTitle("Ingredients", context),
-            buildContainer(
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListView.builder(
-                  itemCount: meal.ingredients.length,
-                  itemBuilder: (ctx, index) => Card(
-                    color: Theme.of(context).accentColor,
-                    child: Padding(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                      child: Text(meal.ingredients[index]),
-                    ),
+            buildExpandedContainer(
+              ListView.builder(
+                itemBuilder: (ctx, index) => Card(
+                  color: Theme.of(context).accentColor,
+                  margin: EdgeInsets.all(10),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    child: Text(meal.ingredients[index]),
                   ),
                 ),
+                itemCount: meal.ingredients.length,
               ),
             ),
             buildSectionTitle("Steps", context),
-            buildContainer(Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: ListView.builder(
-                itemBuilder: (ctx, index) => ListTile(
+            buildExpandedContainer(
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: ListView.builder(
+                  itemBuilder: (ctx, index) => ListTile(
                     leading: CircleAvatar(child: Text("${(index + 1)}"),),
                     title: Text(meal.steps[index]),
+                  ),
+                  itemCount: meal.steps.length,
                 ),
-                itemCount: meal.steps.length,
               ),
-            ),),
-            SizedBox(height: 20)
+            ),
+            SizedBox(height: 30),
           ],
         ),
       ),
     );
   }
 
-  Container buildContainer(child) => Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey),
-        ),
-        child: child,
-      );
+  Container buildExpandedContainer(Widget child) {
+    return Container(
+      height: 188,
+      margin: EdgeInsets.symmetric(horizontal: 20),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: child,
+    );
+  }
 
   Container buildSectionTitle(String title, BuildContext context) {
     return Container(

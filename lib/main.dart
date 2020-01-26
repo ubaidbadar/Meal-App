@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             color: Color.fromRGBO(20, 51, 51, 1),
             fontSize: 20,
             fontFamily: "RobotoCondensed",
-            fontWeight: FontWeight.bold
+            fontWeight: FontWeight.w700
           ),
         )
       ),
