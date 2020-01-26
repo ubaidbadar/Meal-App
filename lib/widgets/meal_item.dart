@@ -1,4 +1,5 @@
 import 'package:delimeal/models/meal.dart';
+import 'package:delimeal/screens/meal_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class MealItem extends StatelessWidget {
@@ -31,6 +32,7 @@ class MealItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: () => Navigator.of(context).pushNamed(MealScreen.route, arguments: meal),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 4,
